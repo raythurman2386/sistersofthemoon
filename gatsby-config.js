@@ -5,12 +5,21 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-stripe`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ["Product"],
+        secretKey: `${process.env.STRIPE_SECRET_KEY}`,
+        downloadFiles: true,
       },
     },
     `gatsby-transformer-sharp`,
