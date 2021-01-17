@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Sisters of the Moon`,
+    title: `Sisters by the Moon`,
     description: `Home to all of your homemade candle and personalized tarot are rune readings`,
     author: `@gatsbyjs`,
   },
@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `sistersofthemoon`,
+        name: `sistersbythemoon`,
         short_name: `Sisters`,
         start_url: `/`,
         background_color: `#663399`,
