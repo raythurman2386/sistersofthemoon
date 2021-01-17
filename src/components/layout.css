@@ -667,7 +667,8 @@ h6 {
     color: #fff;
     background: var(--color-base);
     background-position: center;
-    background-size: cover;
+    background-size: fill;
+    background-image: url(../images/ravens.jpeg);
 }
 
 .site-nav-item {
@@ -760,6 +761,10 @@ h6 {
 
 .site-main {
     padding: 4vw 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* Footer
