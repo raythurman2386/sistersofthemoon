@@ -13,6 +13,7 @@ import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
+  const isHome = window.location.pathname === '/';
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,20 +26,23 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+      <div className="viewport">
+        <div className="viewport-top">
+          {/* The main header section on top of the screen */}
+          <Header siteTitle={data.site.siteMetadata.title} isHome={isHome} />
+          <main className="site-main">{children}</main>
+        </div>
+        <div className="viewport-bottom">
+          {/* The footer at the very bottom of the screen */}
+          <footer className="site-foot">
+            <div className="site-foot-nav container">
+              © {new Date().getFullYear()}, Built by
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+              <a href="https://raythurman.com">Thurman Web Solutions</a>
+            </div>
+          </footer>
+
+        </div>
       </div>
     </>
   )

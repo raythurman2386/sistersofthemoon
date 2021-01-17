@@ -7,9 +7,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div style={{ display: "flex", justifyContent: 'space-around', alignItems: 'center' }}>
-        <Products />
-      </div>
+      <Products />
     </Layout>
   )
 }

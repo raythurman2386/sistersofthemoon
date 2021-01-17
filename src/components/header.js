@@ -2,31 +2,30 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+const Header = ({ siteTitle, isHome }) => (
+  <header className="site-head">
+    <div className="container">
+      <div className="site-mast">
+        <div className="site-mast-left">
+          {/* Logo goes here */}
+        </div>
+      </div>
+      {isHome && <div className="site-banner">
+        <h1 className="site-banner-title">{siteTitle}</h1>
+        <p className="site-banner-desc">Welcome</p>
+      </div>}
+
+      <nav className="site-nav">
+        <div className="site-nav-left">
+          {/* The navigation items as setup in Ghost */}
+          <Link className="site-nav-item" to="/">Home</Link>
+          <Link className="site-nav-item" to="/success">Store</Link>
+          <Link className="site-nav-item" to="/cancel">Blog</Link>
+        </div>
+        <div className="site-nav-right">
+          <Link className="site-nav-button" to="/about">About</Link>
+        </div>
+      </nav>
     </div>
   </header>
 )
