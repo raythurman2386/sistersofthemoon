@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import styled from 'styled-components'
 import Product from './product';
 
 const PRODUCTS_QUERY = graphql`
