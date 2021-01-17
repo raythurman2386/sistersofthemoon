@@ -30,18 +30,20 @@ const PRODUCTS_QUERY = graphql`
 
 const Products = () => {
   return (
-    <StaticQuery query={PRODUCTS_QUERY}
-      render={
-        ({ allStripePrice, allStripeProduct }) => {
-          return allStripeProduct.edges.map(product => {
-            const skus = allStripePrice.edges.filter(sku => sku.node.product.id === product.node.id)
-            return (
-              <Product key={product.node.id} skus={skus} product_name={product.node.name} />
-            )
-          })
+    <div className="container" style={{ display: 'flex', width: '100%', justifyContent: 'space-around', alignItems: 'center', flexWrap: 'wrap' }}>
+      <StaticQuery query={PRODUCTS_QUERY}
+        render={
+          ({ allStripePrice, allStripeProduct }) => {
+            return allStripeProduct.edges.map(product => {
+              const skus = allStripePrice.edges.filter(sku => sku.node.product.id === product.node.id)
+              return (
+                <Product key={product.node.id} skus={skus} product_name={product.node.name} />
+              )
+            })
+          }
         }
-      }
-    />
+      />
+    </div>
   )
 }
 

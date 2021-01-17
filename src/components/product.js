@@ -52,6 +52,7 @@ const Card = styled.div`
     transition: all 0.3s;
     width: 250px;
     height: 400px;
+    margin: var(--height) var(--margin);
     &:hover {
       box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     }

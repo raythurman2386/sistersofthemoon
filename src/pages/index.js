@@ -51,18 +51,20 @@ const IndexPage = () => {
 export default IndexPage
 
 const ArticleTop = styled.div`
-margin-bottom: 8rem;
+margin: var(--height) 0;
 padding: 0 2.5rem;
 line-height: 1.75;
 `;
 
 const ArticleLeft = styled.article`
+margin: var(--height) 0;
 display: flex;
 align-items: center;
 padding: 2.5rem 0;
 `;
 
 const ArticleRight = styled.article`
+margin: var(--height) 0;
 display: flex;
 flex-direction: row-reverse;
 padding: 2.5rem 0;
