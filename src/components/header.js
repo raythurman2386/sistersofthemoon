@@ -19,11 +19,12 @@ const Header = ({ siteTitle, isHome }) => (
           {<a href="https://instagram.com" className="site-nav-item" target="_blank" rel="noopener noreferrer"><img src={InstaLogo} style={{ width: "40px", height: "40px", color: "white" }} alt="Instagram" /></a>}
         </div>
       </div>
-      {isHome && <div className="site-banner">
+      <div className="site-banner">
         <h1 className="site-banner-title">{siteTitle}</h1>
         {/* <p className="site-banner-desc">Welcome</p> */}
-      </div>}
+      </div>
 
+      {/* TODO: Sticky Navigation for scrollable areas of the site */}
       <nav className="site-nav">
         <div className="site-nav-left">
           {/* The navigation items as setup in Ghost */}
