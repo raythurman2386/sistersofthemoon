@@ -13,7 +13,7 @@ import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const isHome = window.location.pathname === '/';
+  // const isHome = window.location.pathname === '/';
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       <div className="viewport">
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
-          <Header siteTitle={data.site.siteMetadata.title} isHome={isHome} />
+          <Header siteTitle={data.site.siteMetadata.title} />
           <main className="site-main">{children}</main>
         </div>
         <div className="viewport-bottom">

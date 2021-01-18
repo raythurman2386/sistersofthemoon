@@ -5,7 +5,7 @@ import MoonLogo from '../images/night-mode.png'
 import FacebookLogo from '../images/facebook-2.png'
 import InstaLogo from '../images/instagram.png'
 
-const Header = ({ siteTitle, isHome }) => (
+const Header = ({ siteTitle }) => (
   <header className="site-head">
     <div className="container">
       <div className="site-mast">
