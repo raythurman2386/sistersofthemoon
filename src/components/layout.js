@@ -36,9 +36,9 @@ const Layout = ({ children }) => {
           {/* The footer at the very bottom of the screen */}
           <footer className="site-foot">
             <div className="site-foot-nav container">
-              © {new Date().getFullYear()}, Built by
-          {` `}
-              <a href="https://raythurman.com">Thurman Web Solutions</a>
+              © {new Date().getFullYear()}
+              {` `}
+              Sisters by the Moon
             </div>
           </footer>
 
