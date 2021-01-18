@@ -1,86 +1,79 @@
 import React, { useState } from "react"
 import styled from 'styled-components';
+import { CartContext } from '../context/CartContext'
 
 const Product = ({ product_name, skus }) => {
   const [sku, setSku] = useState(skus[0].node.id)
-  const stripe = window.Stripe(
-    `${process.env.STRIPE_PUBLIC_KEY}`
-  )
-
-  const placeOrder = () => {
-    stripe.redirectToCheckout({
-      lineItems: [
-        {
-          price: sku,
-          quantity: 1,
-        },
-      ],
-      mode: "payment",
-      successUrl: "http://localhost:8000/success",
-      cancelUrl: "http://localhost:8000/cancel",
-    })
-  }
-
-  console.log(skus[0].node.unit_amount)
 
   return (
-    <Card>
-      <header>
-        <CardImg src="https://picsum.photos/250" alt="something"></CardImg>
-        <Title>{product_name}</Title>
-        <Description>{skus[0].node.unit_amount}</Description>
-      </header>
-      {skus.length <= 1 ? (null) : (
-        <select defaultValue={sku} onBlur={e => setSku(e.target.value)}>
-          {skus.map(edge => (
-            <option key={edge.node.id} value={edge.node.id}>{edge.node.nickname}</option>
-          ))}
-        </select>
+    <CartContext.Consumer>
+      {({ addItem }) => (
+        <Card>
+          <header>
+            <CardImg src="https://picsum.photos/250" alt="something"></CardImg>
+            <Title>{product_name}</Title>
+            <Description>${skus[0].node.unit_amount / 100}.00</Description>
+          </header>
+          {skus.length <= 1 ? (<ActionButton onClick={() => addItem({ node: skus[0].node })}>Add To Cart</ActionButton>) : (
+            <>
+              <select defaultValue={sku} onBlur={e => setSku(e.target.value)}>
+                {skus.map(edge => (
+                  <option key={edge.node.id} value={edge.node.id}>{edge.node.nickname}</option>
+                ))}
+              </select>
+              <ActionButton onClick={() => addItem(skus.filter(({ node }) => node.id === sku))}>Add To Cart</ActionButton>
+            </>
+          )}
+        </Card>
       )}
-      <ActionButton onClick={placeOrder}>Buy Now</ActionButton>
-    </Card>
+    </CartContext.Consumer>
   )
 }
 
 export default Product
 
 const Card = styled.div`
-    display: flex;
-    flex-direction: column;
     background: #fff;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     transition: all 0.3s;
-    width: 250px;
-    height: 400px;
-    margin: var(--height) var(--margin);
+    width: 100%;
     &:hover {
-      box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      box-shadow: 0 8px 17px 0 rgba(155,155,155,0.2),0 6px 20px 0 rgba(155,155,155,0.19);
     }
 `
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: #333;
-  font-weight: 300;
+  margin: 0.75rem 0rem 0rem 0rem;
+  padding: 0 1rem;
 `
 
 const CardImg = styled.img`
+  display: block;  
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 `
 
 const Description = styled.p`
-  color: #fff;
-  font-weight: 300;
+  font-size: 1.5rem;
+  display: block;
+  display: -webkit-box;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  max-width: 100%;
+  color: #333;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 const ActionButton = styled.button`
-  padding: 8px 14px;
-  background: #333;
+  display: inline-block;
+  margin: 5px 5px 5px 5px;
+  text-align: right;
+  background: ${props => props.btnColor || '#5cb85c'};
   color: #fff;
-  cursor: pointer;
-  outline: 0;
-  font-weight: 300;
   :hover {
     opacity: 0.8;
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
+import styled from 'styled-components'
 import Product from './product';
 
 const PRODUCTS_QUERY = graphql`
@@ -33,7 +34,7 @@ const Products = () => {
     // TEMPORARY CHANGES MARKED TO COME FOR THIS PAGE
     // TODO: Style store and products
     // Change to CSS Grid for the store layout
-    <div className="container" style={{ display: 'flex', width: '100%', justifyContent: 'space-around', alignItems: 'center', flexWrap: 'wrap' }}>
+    <GridContainer>
       <StaticQuery query={PRODUCTS_QUERY}
         render={
           ({ allStripePrice, allStripeProduct }) => {
@@ -48,8 +49,17 @@ const Products = () => {
           }
         }
       />
-    </div>
+    </GridContainer>
   )
 }
 
 export default Products
+
+const GridContainer = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 4vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 5rem;
+`;
