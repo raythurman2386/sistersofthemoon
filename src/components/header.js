@@ -19,7 +19,7 @@ const Header = ({ siteTitle }) => (
             </div>
             <div className="site-mast-right">
               {<a href="https://facebook.com" className="site-nav-item" target="_blank" rel="noopener noreferrer"><img src={FacebookLogo} style={{ width: "40px", height: "40px", color: "white" }} alt="Facebook" /></a>}
-              {<a href="https://instagram.com" className="site-nav-item" target="_blank" rel="noopener noreferrer"><img src={InstaLogo} style={{ width: "40px", height: "40px", color: "white" }} alt="Instagram" /></a>}
+              {<a href="https://www.instagram.com/sistersbythemoon13/" className="site-nav-item" target="_blank" rel="noopener noreferrer"><img src={InstaLogo} style={{ width: "40px", height: "40px", color: "white" }} alt="Instagram" /></a>}
             </div>
           </div>
           <div className="site-banner">

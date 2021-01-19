@@ -9,9 +9,13 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <section className="container">
-        <ArticleTop>
-          <h2>Something</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum leo feugiat vulputate accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lorem dui, ultricies euismod arcu sed, tincidunt condimentum lorem. Duis faucibus, felis sed semper aliquam, enim lectus vulputate nisl, eget rhoncus tellus dolor a lectus.</p>
+        <ArticleTop
+          data-sal="fade"
+          data-sal-duration="1000" // changes duration of the animation (from 200 to 2000 ms)
+          data-sal-delay="100" // adds delay to the animation (from 5 to 1000 ms)
+          data-sal-easing="ease"
+        >
+          <h3>"The space between life and death, that’s where we are the most alive."<span style={{ fontSize: '1.6rem', fontStyle: 'none' }}> - Floki</span></h3>
         </ArticleTop>
 
         <ArticleLeft
