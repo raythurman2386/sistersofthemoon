@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/ssr-apis/
- */
+const React = require('react');
 
-// You can delete this file if you're not using it
+exports.onRenderBody = ({ setPostBodyComponents }) => {
+  setPostBodyComponents([
+    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>,
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" /></noscript>,
+  ]);
+};
