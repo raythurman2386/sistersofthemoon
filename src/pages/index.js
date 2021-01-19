@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <section className="container home-content">
+      <section className="container">
         <ArticleTop>
           <h2>Something</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum leo feugiat vulputate accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed lorem dui, ultricies euismod arcu sed, tincidunt condimentum lorem. Duis faucibus, felis sed semper aliquam, enim lectus vulputate nisl, eget rhoncus tellus dolor a lectus.</p>
@@ -105,6 +105,9 @@ margin: var(--height) 0;
 display: flex;
 align-items: center;
 padding: 2.5rem 0;
+@media(max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const ArticleRight = styled.article`
@@ -112,6 +115,9 @@ margin: var(--height) 0;
 display: flex;
 flex-direction: row-reverse;
 padding: 2.5rem 0;
+@media(max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const ArticleContent = styled.div`
@@ -124,6 +130,9 @@ text-align: center;
 const ImageContainer = styled.div`
 width: 50%;
 flex: 1;
+@media(max-width: 768px) {
+  width: 100%;
+}
 `;
 
 // const Image = styled.img`
