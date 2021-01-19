@@ -68,7 +68,7 @@ const Description = styled.p`
   text-overflow: ellipsis;
 `
 
-const ActionButton = styled.button`
+export const ActionButton = styled.button`
   display: inline-block;
   margin: 5px 5px 5px 5px;
   text-align: right;

@@ -2,6 +2,8 @@ import React from "react"
 import Layout from "../components/layout"
 import { CartContext } from '../context/CartContext'
 import SEO from "../components/seo"
+import styled from 'styled-components'
+import { ActionButton } from '../components/product';
 
 const CartPage = () => {
   const stripe = window.Stripe(
@@ -29,19 +31,21 @@ const CartPage = () => {
       <SEO title="Cart" />
       <CartContext.Consumer>
         {({ cart, removeItem }) => (
-          <div className="container" style={{ minHeight: '75vh' }}>
-            <h1>Cart Page</h1>
-            <ul>
+          <div className="container">
+            <h2>My Shopping Cart</h2>
+            <ListContainer>
               {cart.map(item => (
-                <li key={item.node.id}>
-                  <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
+                <ListItem key={item.node.id}>
                   <p>${item.node.unit_amount / 100}.00</p>
-                  <button onClick={e => removeItem(e, item.node.id)}>X</button>
-                </li>
+                  <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
+                  <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.node.id)}>X</ActionButton>
+                </ListItem>
               ))}
-            </ul>
-            <h5>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></h5>
-            <button onClick={() => placeOrder(cart)}>Place Order</button>
+            </ListContainer>
+            <ListFooter>
+              <Subtotal>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
+              <ActionButton onClick={() => placeOrder(cart)}>Place Order</ActionButton>
+            </ListFooter>
           </div>
         )}
       </CartContext.Consumer>
@@ -50,3 +54,23 @@ const CartPage = () => {
 }
 
 export default CartPage
+
+export const ListContainer = styled.ul`
+list-style: none;
+`
+
+export const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const Subtotal = styled.h5`
+  font-size: 1.6rem;
+`
+
+export const ListFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`

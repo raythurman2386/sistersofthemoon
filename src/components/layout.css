@@ -776,6 +776,7 @@ h6 {
     color: rgba(255,255,255,0.7);
     font-size: 1.3rem;
     background: var(--color-base);
+    text-align: center;
 }
 
 .site-foot-nav {

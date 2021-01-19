@@ -6,9 +6,9 @@ export const defaultState = []
 export const CartContext = createContext(defaultState)
 
 export const CartProvider = ({ children }) => {
-  const [cart, addItem, removeItem] = useLocalStorage([])
+  const [cart, addItem, removeItem, emptyCart] = useLocalStorage([])
 
   return (
-    <CartContext.Provider value={{ cart, addItem, removeItem }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cart, addItem, removeItem, emptyCart }}>{children}</CartContext.Provider>
   )
 }
