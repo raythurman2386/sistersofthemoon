@@ -13,12 +13,26 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = () => {
+const Image = ({ rune, tarot, candle }) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      runeImage: file(relativePath: { eq: "runes.webp" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      tarotImage: file(relativePath: { eq: "tarot.webp"}) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      candleImage: file(relativePath: { eq: "candle.webp"}) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -26,7 +40,18 @@ const Image = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  if (rune) {
+    return <Img fluid={data.runeImage.childImageSharp.fluid} alt="rune readings" />
+  } else if (tarot) {
+    return <Img fluid={data.tarotImage.childImageSharp.fluid} alt="tarot readings" />
+  } else if (candle) {
+    return <Img fluid={data.candleImage.childImageSharp.fluid} alt="homemade candles" />
+  }
+
+  return
+  // rune && <Img fluid={data.runeImage.childImageSharp.fluid} />
+  // tarot && <Img fluid={data.tarotImage.childImageSharp.fluid} />
+  // candle && <Img fluid={data.candleImage.childImageSharp.fluid} />
 }
 
 export default Image

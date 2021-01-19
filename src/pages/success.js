@@ -28,7 +28,7 @@ const Success = () => (
             </ListContainer>
             <ListFooter>
               <Subtotal>Total: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-              <ActionButton onClick={() => emptyCart()}>Clear Cart</ActionButton>
+              {cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
             </ListFooter>
           </div>
         </Layout >

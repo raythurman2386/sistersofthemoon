@@ -7,7 +7,7 @@ import { ActionButton } from '../components/product'
 
 const Cancel = () => (
   <CartContext.Consumer>
-    {({ emptyCart, cart }) => (
+    {({ emptyCart, cart, removeItem }) => (
       <Layout>
         <SEO title="Payment Canceled" />
         <div className="container">
@@ -21,13 +21,13 @@ const Cancel = () => (
               <ListItem key={item.node.id}>
                 <p>${item.node.unit_amount / 100}.00</p>
                 <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
-                <ActionButton btnColor="#d9534f" disabled>X</ActionButton>
+                <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.node.id)}>X</ActionButton>
               </ListItem>
             ))}
           </ListContainer>
           <ListFooter>
             <Subtotal>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-            <ActionButton onClick={() => emptyCart()}>Clear Cart</ActionButton>
+            {cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
           </ListFooter>
         </div>
       </Layout>

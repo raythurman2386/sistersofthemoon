@@ -2,12 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styled from 'styled-components'
-
-import Runes from '../images/runes.jpeg';
-import Tarot from '../images/tarot.jpeg';
-import Candle from '../images/candle.jpeg';
-
-
+import Image from '../components/image'
 
 const IndexPage = () => {
   return (
@@ -31,7 +26,7 @@ const IndexPage = () => {
             data-sal-delay="50" // adds delay to the animation (from 5 to 1000 ms)
             data-sal-easing="ease"
           >
-            <Image src={Tarot} alt="Tarot Readings" />
+            <Image tarot />
           </ImageContainer>
           <ArticleContent
             data-sal="slide-left"
@@ -55,7 +50,7 @@ const IndexPage = () => {
             data-sal-delay="50" // adds delay to the animation (from 5 to 1000 ms)
             data-sal-easing="ease"
           >
-            <Image src={Runes} alt="Rune Readings" />
+            <Image rune />
           </ImageContainer>
           <ArticleContent
             data-sal="slide-right"
@@ -79,7 +74,7 @@ const IndexPage = () => {
             data-sal-delay="50" // adds delay to the animation (from 5 to 1000 ms)
             data-sal-easing="ease"
           >
-            <Image src={Candle} alt="Homemade Candles" />
+            <Image candle />
           </ImageContainer>
           <ArticleContent
             data-sal="slide-left"
@@ -131,7 +126,7 @@ width: 50%;
 flex: 1;
 `;
 
-const Image = styled.img`
-width: 100%;
-height: 30rem;
-`
+// const Image = styled.img`
+// width: 100%;
+// height: 30rem;
+// `

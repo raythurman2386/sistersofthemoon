@@ -670,7 +670,7 @@ h6 {
     background: var(--color-base);
     background-position: center;
     background-size: fill;
-    background-image: url(../images/ravens.jpeg);
+    background-image: url(../images/ravens.webp);
 }
 
 .site-nav-item {

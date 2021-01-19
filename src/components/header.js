@@ -1,9 +1,9 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import MoonLogo from '../images/night-mode.png'
-import FacebookLogo from '../images/facebook-2.png'
-import InstaLogo from '../images/instagram.png'
+import MoonLogo from '../images/night-mode.webp'
+import FacebookLogo from '../images/facebook-2.webp'
+import InstaLogo from '../images/instagram.webp'
 import { CartContext } from '../context/CartContext'
 
 const Header = ({ siteTitle }) => (
