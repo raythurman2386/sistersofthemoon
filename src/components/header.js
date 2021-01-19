@@ -8,7 +8,7 @@ import { CartContext } from '../context/CartContext'
 
 const Header = ({ siteTitle }) => (
   <CartContext.Consumer>
-    {({ cart }) => (
+    {({ cart = 0 }) => (
       <header className="site-head">
         <div className="container">
           <div className="site-mast">

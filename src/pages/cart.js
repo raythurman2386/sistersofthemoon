@@ -48,7 +48,7 @@ const CartPage = () => {
           <div className="container">
             <h2>My Shopping Cart</h2>
             <ListContainer>
-              {cart.map(item => (
+              {cart && cart.map(item => (
                 <ListItem key={item.node.id}>
                   <p>${item.node.unit_amount / 100}.00</p>
                   <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
@@ -57,7 +57,7 @@ const CartPage = () => {
               ))}
             </ListContainer>
             <ListFooter>
-              <Subtotal>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
+              <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
               <ActionButton onClick={(e) => placeOrder(e, cart)}>{!loading ? 'Place Order' : 'Loading'}</ActionButton>
             </ListFooter>
           </div>

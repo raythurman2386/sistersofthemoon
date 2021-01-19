@@ -18,7 +18,7 @@ const Success = () => (
               We are working hard to fulfill your order and you should recieve a shipping confirmation once your items have been shipped.
               </p>
             <ListContainer>
-              {cart.map(item => (
+              {cart && cart.map(item => (
                 <ListItem key={item.node.id}>
                   <p>${item.node.unit_amount / 100}.00</p>
                   <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
@@ -27,8 +27,8 @@ const Success = () => (
               ))}
             </ListContainer>
             <ListFooter>
-              <Subtotal>Total: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-              {cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
+              <Subtotal>Total: <span>${cart && cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
+              {cart && cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
             </ListFooter>
           </div>
         </Layout >

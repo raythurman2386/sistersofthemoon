@@ -17,7 +17,7 @@ const Cancel = () => (
             Thank you for looking and we hope you come back again soon.
           </p>
           <ListContainer>
-            {cart.map(item => (
+            {cart && cart.map(item => (
               <ListItem key={item.node.id}>
                 <p>${item.node.unit_amount / 100}.00</p>
                 <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
@@ -26,8 +26,8 @@ const Cancel = () => (
             ))}
           </ListContainer>
           <ListFooter>
-            <Subtotal>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-            {cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
+            <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
+            {cart && cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
           </ListFooter>
         </div>
       </Layout>
