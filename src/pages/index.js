@@ -11,8 +11,8 @@ const IndexPage = () => {
       <section className="container">
         <ArticleTop
           data-sal="fade"
-          data-sal-duration="1000" // changes duration of the animation (from 200 to 2000 ms)
-          data-sal-delay="100" // adds delay to the animation (from 5 to 1000 ms)
+          data-sal-duration="500" // changes duration of the animation (from 200 to 2000 ms)
+          data-sal-delay="1000" // adds delay to the animation (from 5 to 1000 ms)
           data-sal-easing="ease"
         >
           <h3>"The space between life and death, that’s where we are the most alive."<span style={{ fontSize: '1.6rem', fontStyle: 'none' }}> - Floki</span></h3>
@@ -102,6 +102,7 @@ const ArticleTop = styled.div`
 margin: var(--height) 0;
 padding: 0 2.5rem;
 line-height: 1.75;
+text-align: center;
 `;
 
 const ArticleLeft = styled.article`
