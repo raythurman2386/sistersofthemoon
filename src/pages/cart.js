@@ -4,13 +4,21 @@ import { CartContext } from '../context/CartContext'
 import SEO from "../components/seo"
 import styled from 'styled-components'
 import { ActionButton } from '../components/product';
+import { loadStripe } from "@stripe/stripe-js"
+
+let stripePromise
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`)
+  }
+  return stripePromise
+}
 
 const CartPage = () => {
-  const stripe = window.Stripe(
-    `${process.env.STRIPE_PUBLIC_KEY}`
-  )
-
-  const placeOrder = (cart) => {
+  const [loading, setLoading] = React.useState(false)
+  const placeOrder = async (e, cart) => {
+    e.preventDefault();
+    setLoading(true)
     let lineItems = []
     cart.map(item => (
       lineItems.push({
@@ -18,12 +26,18 @@ const CartPage = () => {
         quantity: 1
       })
     ))
-    stripe.redirectToCheckout({
+    const stripe = await getStripe()
+    const { error } = await stripe.redirectToCheckout({
       lineItems,
       mode: "payment",
       successUrl: "http://localhost:8000/success",
       cancelUrl: "http://localhost:8000/cancel",
     })
+
+    if (error) {
+      console.warn("Error", error)
+      setLoading(false)
+    }
   }
 
   return (
@@ -44,7 +58,7 @@ const CartPage = () => {
             </ListContainer>
             <ListFooter>
               <Subtotal>Subtotal: <span>${cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-              <ActionButton onClick={() => placeOrder(cart)}>Place Order</ActionButton>
+              <ActionButton onClick={(e) => placeOrder(e, cart)}>{!loading ? 'Place Order' : 'Loading'}</ActionButton>
             </ListFooter>
           </div>
         )}
