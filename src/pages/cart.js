@@ -78,6 +78,12 @@ export const ListItem = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
+
+  @media(max-width: 768px) {
+    div {
+    font-size: 1.3rem;
+  }
+  }
 `
 
 export const Subtotal = styled.h5`

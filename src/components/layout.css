@@ -676,7 +676,7 @@ h6 {
 .site-nav-item {
     display: inline-block;
     padding: 5px 10px;
-    color: #fff;
+    color: #292b2c;
     opacity: 0.7;
 }
 
@@ -746,13 +746,17 @@ h6 {
 .site-nav-button {
     display: inline-block;
     padding: 5px 10px;
-    border: #fff 1px solid;
-    color: #fff;
+    border: #292b2c 1px solid;
+    color: #292b2c;
     font-size: 1.3rem;
     line-height: 1em;
     border-radius: var(--radius);
     opacity: 0.7;
     margin-left: 5px;
+}
+
+.site-nav-button .cart {
+    background-color: #26a8ed;
 }
 
 .site-nav-button:hover {

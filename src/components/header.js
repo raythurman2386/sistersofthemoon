@@ -36,7 +36,7 @@ const Header = ({ siteTitle }) => (
               {/* <Link className="site-nav-item" to="/cancel">Blog</Link> */}
             </div>
             <div className="site-nav-right">
-              {cart.length !== 0 && <Link className="site-nav-button" to="/cart">Cart {cart.length}</Link>}
+              {cart.length !== 0 && <Link className="site-nav-button cart" to="/cart">Cart {cart.length}</Link>}
 
               <Link className="site-nav-button" to="/about">About</Link>
             </div>
