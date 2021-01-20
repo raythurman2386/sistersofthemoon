@@ -50,8 +50,8 @@ const CartPage = () => {
             <ListContainer>
               {cart && cart.map(item => (
                 <ListItem key={item.node.id}>
-                  <p>${item.node.unit_amount / 100}.00</p>
-                  <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
+                  <div>${item.node.unit_amount / 100}.00</div>
+                  <div>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</div>
                   <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.node.id)}>X</ActionButton>
                 </ListItem>
               ))}
@@ -77,6 +77,7 @@ export const ListItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem 0;
 `
 
 export const Subtotal = styled.h5`
