@@ -83,7 +83,7 @@ const IndexPage = () => {
           <ArticleContent
             data-sal="slide-left"
             data-sal-duration="1000" // changes duration of the animation (from 200 to 2000 ms)
-            data-sal-delay="50" // adds delay to the animation (from 5 to 1000 ms)
+            data-sal-delay="100" // adds delay to the animation (from 5 to 1000 ms)
             data-sal-easing="ease"
           >
             <h3>Homemade Candles</h3>
