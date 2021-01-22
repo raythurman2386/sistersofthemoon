@@ -33,6 +33,8 @@ const Header = ({ siteTitle }) => (
               {/* The navigation items as setup in Ghost */}
               <Link className="site-nav-item" to="/">Home</Link>
               <Link className="site-nav-item" to="/store">Store</Link>
+              <Link className="site-nav-item" to="/tarot">Tarot</Link>
+              <Link className="site-nav-item" to="/runes">Runes</Link>
               {/* <Link className="site-nav-item" to="/cancel">Blog</Link> */}
             </div>
             <div className="site-nav-right">

@@ -13,18 +13,22 @@ const Product = ({ product_name, skus }) => {
           <header>
             <Image tarot />
             <Title>{product_name}</Title>
-            <Description>${skus[0].node.unit_amount / 100}.00</Description>
+            {product_name === 'Rune Reading'
+              || product_name === 'Tarot Reading' ?
+              (<Description>Ranges $5 - $25</Description>) :
+              (<Description>${ skus[0].node.unit_amount / 100}.00</Description>)}
           </header>
-          {skus.length <= 1 ? (<ActionButton onClick={() => addItem({ node: skus[0].node })}>Add To Cart</ActionButton>) : (
-            <>
-              <select defaultValue={sku} onBlur={e => setSku(e.target.value)}>
+          {/* Remove for now. Tarot and Runes will get their own more detailed pages */}
+          {/* {skus.length <= 1 ? (<ActionButton onClick={() => addItem({ node: skus[0].node })}>Add To Cart</ActionButton>) : ( */}
+          {/* <select defaultValue={sku} onBlur={e => setSku(e.target.value)}>
                 {skus.map(edge => (
                   <option key={edge.node.id} value={edge.node.id}>{edge.node.nickname}</option>
                 ))}
-              </select>
-              <ActionButton onClick={() => addItem(skus.filter(({ node }) => node.id === sku))}>Add To Cart</ActionButton>
-            </>
-          )}
+              </select>)} */}
+          {product_name === 'Rune Reading'
+            || product_name === 'Tarot Reading' ?
+            (<ActionButton btnColor="#5bc0de" onClick="#">Learn More</ActionButton>) :
+            (<ActionButton onClick={() => addItem(skus.filter(({ node }) => node.id === sku))}>Add To Cart</ActionButton>)}
         </Card>
       )}
     </CartContext.Consumer>
