@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from 'styled-components';
+import { Link } from 'gatsby'
 import { CartContext } from '../context/CartContext'
 import Image from './image';
 
-const Product = ({ product_name, skus }) => {
-  const [sku, setSku] = useState(skus[0].node.id)
+const Product = ({ product_name, skus, price }) => {
 
   return (
     <CartContext.Consumer>
@@ -16,19 +16,13 @@ const Product = ({ product_name, skus }) => {
             {product_name === 'Rune Reading'
               || product_name === 'Tarot Reading' ?
               (<Description>Ranges $5 - $25</Description>) :
-              (<Description>${ skus[0].node.unit_amount / 100}.00</Description>)}
+              (<Description>${ price / 100}.00</Description>)}
           </header>
-          {/* Remove for now. Tarot and Runes will get their own more detailed pages */}
-          {/* {skus.length <= 1 ? (<ActionButton onClick={() => addItem({ node: skus[0].node })}>Add To Cart</ActionButton>) : ( */}
-          {/* <select defaultValue={sku} onBlur={e => setSku(e.target.value)}>
-                {skus.map(edge => (
-                  <option key={edge.node.id} value={edge.node.id}>{edge.node.nickname}</option>
-                ))}
-              </select>)} */}
+
           {product_name === 'Rune Reading'
             || product_name === 'Tarot Reading' ?
-            (<ActionButton btnColor="#5bc0de" onClick="#">Learn More</ActionButton>) :
-            (<ActionButton onClick={() => addItem(skus.filter(({ node }) => node.id === sku))}>Add To Cart</ActionButton>)}
+            (<LinkButton to={product_name === 'RuneReading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
+            (<ActionButton onClick={() => addItem(skus)}>Add To Cart</ActionButton>)}
         </Card>
       )}
     </CartContext.Consumer>
@@ -77,5 +71,20 @@ export const ActionButton = styled.button`
   border-radius: var(--radius);
   :hover {
     opacity: 0.8;
+  }
+`
+
+export const LinkButton = styled(Link)`
+  display: inline-block;
+  margin: 5px 5px 5px 5px;
+  padding: 0 8px;
+  text-align: right;
+  background: ${props => props.btnColor || '#5cb85c'};
+  color: #fff;
+  border-radius: var(--radius);
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+    text-decoration: none;
   }
 `

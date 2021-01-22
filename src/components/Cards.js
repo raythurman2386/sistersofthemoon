@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Product from './product';
 
-const items = [{ id: 1, name: "3 Card Reading" }, { id: 2, name: "5 Card Reading" }, { id: 3, name: "Full Spread Reading" }, { id: 4, name: "Recorded Reading" }]
+const items = [{ id: 1, name: "3 Card Reading", price: 500 }, { id: 2, name: "5 Card Reading", price: 1000 }, { id: 3, name: "Full Spread Reading", price: 1500 }, { id: 4, name: "Recorded Reading", price: 2500 }]
 
 const Cards = () => {
   return (
@@ -10,7 +10,7 @@ const Cards = () => {
     // TODO: Style store and products
     // Change to CSS Grid for the store layout
     <GridContainer>
-      {items.map(item => <Product key={item.id} skus={[]} product_name={item.name} />)}
+      {items.map(item => <Product key={item.id} skus={[]} product_name={item.name} price={item.price} />)}
     </GridContainer>
   )
 }

@@ -37,13 +37,13 @@ const Products = () => {
     <GridContainer>
       <StaticQuery query={PRODUCTS_QUERY}
         render={
-          ({ allStripePrice, allStripeProduct }) => {
-            return allStripeProduct.edges.map(product => {
+          ({ allStripePrice }) => {
+            return allStripePrice.edges.map(product => {
               // Get all Skus that match a specific product for the drop down
               // In case one product has multiple sizes/prices
-              const skus = allStripePrice.edges.filter(sku => sku.node.product.id === product.node.id)
+              // const skus = allStripePrice.edges.filter(sku => sku.node.product.id === product.node.id)
               return (
-                <Product key={product.node.id} skus={skus} product_name={product.node.name} />
+                <Product key={product.node.id} skus={product.node.id} product_name={product.node.product.name} price={product.node.unit_amount} />
               )
             })
           }
