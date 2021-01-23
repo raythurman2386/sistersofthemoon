@@ -21,7 +21,7 @@ const Product = ({ product_name, skus, price }) => {
 
           {product_name === 'Rune Reading'
             || product_name === 'Tarot Reading' ?
-            (<LinkButton to={product_name === 'RuneReading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
+            (<LinkButton to={product_name === 'Rune Reading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
             (<ActionButton onClick={() => addItem(skus)}>Add To Cart</ActionButton>)}
         </Card>
       )}
