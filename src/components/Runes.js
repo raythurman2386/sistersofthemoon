@@ -22,6 +22,6 @@ const GridContainer = styled.div`
   margin: 0 auto;
   padding: 0 4vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 5rem;
 `;
