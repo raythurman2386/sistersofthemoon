@@ -7,29 +7,21 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
   // const isHome = window.location.pathname === '/';
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const { title } = useSiteMetadata()
 
   return (
     <>
       <div className="viewport">
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
-          <Header siteTitle={data.site.siteMetadata.title} />
+          <Header siteTitle={title} />
           <main className="site-main" style={{ minHeight: '50vh' }}>{children}</main>
         </div>
         <div className="viewport-bottom">

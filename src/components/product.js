@@ -1,31 +1,27 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from 'styled-components';
 import { Link } from 'gatsby'
 import { CartContext } from '../context/CartContext'
 import Image from './image';
 
-const Product = ({ product_name, skus, price }) => {
-
+const Product = ({ item }) => {
+  const { addItem } = useContext(CartContext)
   return (
-    <CartContext.Consumer>
-      {({ addItem }) => (
-        <Card>
-          <header>
-            <Image tarot />
-            <Title>{product_name}</Title>
-            {product_name === 'Rune Reading'
-              || product_name === 'Tarot Reading' ?
-              (<Description>Ranges $5 - $25</Description>) :
-              (<Description>${ price / 100}.00</Description>)}
-          </header>
+    <Card>
+      <header>
+        <Image tarot />
+        <Title>{item.product.name}</Title>
+        {item.product.name === 'Rune Reading'
+          || item.product.name === 'Tarot Reading' ?
+          (<Description>Ranges $5 - $25</Description>) :
+          (<Description>${ (item.unit_amount) / 100}.00</Description>)}
+      </header>
 
-          {product_name === 'Rune Reading'
-            || product_name === 'Tarot Reading' ?
-            (<LinkButton to={product_name === 'Rune Reading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
-            (<ActionButton onClick={() => addItem(skus)}>Add To Cart</ActionButton>)}
-        </Card>
-      )}
-    </CartContext.Consumer>
+      {item.product.name === 'Rune Reading'
+        || item.product.name === 'Tarot Reading' ?
+        (<LinkButton to={item.product.name === 'Rune Reading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
+        (<ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>)}
+    </Card>
   )
 }
 
