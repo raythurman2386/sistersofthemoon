@@ -18,15 +18,15 @@ const Cancel = () => (
           </p>
           <ListContainer>
             {cart && cart.map(item => (
-              <ListItem key={item.node.id}>
-                <p>${item.node.unit_amount / 100}.00</p>
-                <p>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</p>
-                <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.node.id)}>X</ActionButton>
+              <ListItem key={item.id}>
+                <p>${item.unit_amount / 100}.00</p>
+                <p>{item.product.name}{item.nickname && <span> - {item.nickname}</span>}</p>
+                <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.id)}>X</ActionButton>
               </ListItem>
             ))}
           </ListContainer>
           <ListFooter>
-            <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
+            <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += item.unit_amount, 0) / 100}.00</span></Subtotal>
             {cart && cart.length !== 0 && <ActionButton btnColor="#f0ad4e" onClick={() => emptyCart()}>Clear Cart</ActionButton>}
           </ListFooter>
         </div>

@@ -51,7 +51,7 @@ const CartPage = () => {
         <ListContainer>
           {cart && cart.map(item => (
             <ListItem key={item.id}>
-              <div>${(item.unit_amount * item.quantity) / 100}.00</div>
+              <div>{item.quantity}{' - '}${(item.unit_amount * item.quantity) / 100}.00</div>
               <div>{item.product.name}{item.nickname && <span> - {item.nickname}</span>}</div>
               <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.id)}>X</ActionButton>
             </ListItem>
