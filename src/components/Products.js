@@ -9,6 +9,9 @@ const Products = () => {
   return (
     <GridContainer>
       {edges.map(product => {
+        if (product.node.product.name === "Tarot Reading" || product.node.product.name === "Rune Reading") {
+          return
+        }
         return (
           <Product key={product.node.id} item={product.node} />
         )

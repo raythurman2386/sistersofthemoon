@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import Product from './product';
-
-const items = [{ id: 1, name: "3 Cast Runes", price: 500 }, { id: 2, name: "Traditional Rune Reading", price: 1000 }, { id: 3, name: "Runic V", price: 1500 }, { id: 4, name: "Recorded Rune Reading", price: 2500 }]
+import CardProduct from './cardProduct';
+import { useRunesData } from '../hooks/useRunesData'
 
 const Runes = () => {
+  const { edges } = useRunesData()
   return (
     // TEMPORARY CHANGES MARKED TO COME FOR THIS PAGE
     // TODO: Style store and products
     // Change to CSS Grid for the store layout
     <GridContainer>
-      {items.map(item => <Product key={item.id} skus={[]} product_name={item.name} price={item.price} />)}
+      {edges.map(item => <CardProduct key={item.node.id} item={item.node} />)}
     </GridContainer>
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import Product from './product';
-
-const items = [{ id: 1, name: "3 Card Reading", price: 500 }, { id: 2, name: "5 Card Reading", price: 1000 }, { id: 3, name: "Full Spread Reading", price: 1500 }, { id: 4, name: "Recorded Reading", price: 2500 }]
+import CardProduct from './cardProduct';
+import { useCardsData } from '../hooks/useCardsData'
 
 const Cards = () => {
+  const { edges } = useCardsData()
   return (
     <GridContainer>
-      {items.map(item => <Product key={item.id} skus={[]} product_name={item.name} price={item.price} />)}
+      {edges.map(product => <CardProduct key={product.node.id} item={product.node} />)}
     </GridContainer>
   )
 }

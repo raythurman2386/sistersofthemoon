@@ -11,16 +11,10 @@ const Product = ({ item }) => {
       <header>
         <Image tarot />
         <Title>{item.product.name}</Title>
-        {item.product.name === 'Rune Reading'
-          || item.product.name === 'Tarot Reading' ?
-          (<Description>Ranges $5 - $25</Description>) :
-          (<Description>${ (item.unit_amount) / 100}.00</Description>)}
+        <Description>${(item.unit_amount) / 100}.00</Description>
       </header>
 
-      {item.product.name === 'Rune Reading'
-        || item.product.name === 'Tarot Reading' ?
-        (<LinkButton to={item.product.name === 'Rune Reading' ? "/runes" : "/tarot"} btnColor="#5bc0de" onClick="#">Learn More</LinkButton>) :
-        (<ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>)}
+      <ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>
     </Card>
   )
 }
