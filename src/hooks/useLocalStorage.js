@@ -12,24 +12,30 @@ export const useLocalStorage = initialValue => {
     localStorage.setItem('Cart', JSON.stringify(updatedValue))
   }
 
-  const addItem = item => {
-    try {
-      setCart([...storedCart, ...item])
-    } catch (error) {
-      setCart([...storedCart, item])
+  const addItem = (e, item) => {
+    e.preventDefault()
+    let [dups] = storedCart.filter(cartitem => cartitem.id === item.id)
+    let newCart = storedCart.filter(cartitem => cartitem.id !== item.id)
+    if (dups) {
+      return setCart([...newCart, { ...item, quantity: dups.quantity + 1 }])
     }
+
+    return setCart([...storedCart, item])
   }
 
   const removeItem = (e, id) => {
     e.preventDefault()
-    const newCart = storedCart.filter(item => item.node.id !== id)
+    const [item] = storedCart.filter(item => item.id === id)
+    const newCart = storedCart.filter(item => item.id !== id)
 
-    setCart(newCart)
+    if (item.quantity > 1) {
+      return setCart([...newCart, { ...item, quantity: item.quantity - 1 }])
+    }
+
+    return setCart(newCart)
   }
 
-  const emptyCart = () => {
-    setCart([])
-  }
+  const emptyCart = () => setCart([])
 
   return [storedCart, addItem, removeItem, emptyCart]
 }

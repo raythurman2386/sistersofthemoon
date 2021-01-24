@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Layout from "../components/layout"
 import { CartContext } from '../context/CartContext'
 import SEO from "../components/seo"
@@ -16,16 +16,19 @@ const getStripe = () => {
 
 const CartPage = () => {
   const [loading, setLoading] = React.useState(false)
+  const { cart, removeItem } = useContext(CartContext)
+
   const placeOrder = async (e, cart) => {
     e.preventDefault();
     setLoading(true)
     let lineItems = []
-    cart.map(item => (
-      lineItems.push({
-        price: item.node.id,
-        quantity: 1
+    cart.map(item => {
+      return lineItems.push({
+        price: item.id,
+        quantity: item.quantity
       })
-    ))
+    })
+
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout({
       lineItems,
@@ -43,26 +46,22 @@ const CartPage = () => {
   return (
     <Layout>
       <SEO title="Cart" />
-      <CartContext.Consumer>
-        {({ cart, removeItem }) => (
-          <div className="container">
-            <h2>My Shopping Cart</h2>
-            <ListContainer>
-              {cart && cart.map(item => (
-                <ListItem key={item.node.id}>
-                  <div>${item.node.unit_amount / 100}.00</div>
-                  <div>{item.node.product.name}{item.node.nickname && <span> - {item.node.nickname}</span>}</div>
-                  <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.node.id)}>X</ActionButton>
-                </ListItem>
-              ))}
-            </ListContainer>
-            <ListFooter>
-              <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += item.node.unit_amount, 0) / 100}.00</span></Subtotal>
-              <ActionButton onClick={(e) => placeOrder(e, cart)}>{!loading ? 'Place Order' : 'Loading'}</ActionButton>
-            </ListFooter>
-          </div>
-        )}
-      </CartContext.Consumer>
+      <div className="container">
+        <h2>My Shopping Cart</h2>
+        <ListContainer>
+          {cart && cart.map(item => (
+            <ListItem key={item.id}>
+              <div>${(item.unit_amount * item.quantity) / 100}.00</div>
+              <div>{item.product.name}{item.nickname && <span> - {item.nickname}</span>}</div>
+              <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.id)}>X</ActionButton>
+            </ListItem>
+          ))}
+        </ListContainer>
+        <ListFooter>
+          <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += (item.unit_amount * item.quantity), 0) / 100}.00</span></Subtotal>
+          <ActionButton onClick={(e) => placeOrder(e, cart)}>{!loading ? 'Place Order' : 'Loading'}</ActionButton>
+        </ListFooter>
+      </div>
     </Layout>
   )
 }
