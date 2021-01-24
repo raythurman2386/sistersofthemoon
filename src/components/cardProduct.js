@@ -1,19 +1,26 @@
 import React, { useContext } from "react"
 import styled from 'styled-components';
-import { Link } from 'gatsby'
 import { CartContext } from '../context/CartContext'
 import Image from './image';
 
 const CardProduct = ({ item }) => {
   const { addItem } = useContext(CartContext)
   return (
-    <Card>
-      <header>
-        <Image tarot />
-        <Title>{item.nickname}</Title>
-        <Description>${item.unit_amount / 100}.00</Description>
-      </header>
-      <ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>
+    <Card className="flip-right">
+      <div className="card">
+        <div className="front">
+          <header>
+            <Image tarot />
+            <Title>{item.nickname}</Title>
+            <Description>${item.unit_amount / 100}.00</Description>
+          </header>
+        </div>
+        <div className="back">
+          <Title>{item.nickname}</Title>
+          Description goes here
+          <ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>
+        </div>
+      </div>
     </Card>
   )
 }
@@ -21,14 +28,54 @@ const CardProduct = ({ item }) => {
 export default CardProduct
 
 const Card = styled.div`
-    background: #fff;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-    transition: all 0.3s;
-    width: 100%;
-    border-radius: var(--radius);
-    &:hover {
-      box-shadow: 0 8px 17px 0 rgba(155,155,155,0.2),0 6px 20px 0 rgba(155,155,155,0.19);
+  background: #fff;
+  min-height: 380px;
+  width: 100%;
+  border-radius: var(--radius);
+  perspective: 1000px;
+
+  .card {
+    .front, .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      backface-visibility: hidden;
     }
+
+    .front {
+      z-index: 2;
+      opacity: 1;
+    }
+
+    .back {
+      opacity: 0;
+      color: #333;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &.flip-right {
+    .card {
+      .back {
+       opacity: 1;
+       transition: 0.3s;
+      }
+    }
+  }
+
+  &:hover {
+    .front {
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
 `
 
 const Title = styled.h3`
@@ -60,20 +107,5 @@ export const ActionButton = styled.button`
   border-radius: var(--radius);
   :hover {
     opacity: 0.8;
-  }
-`
-
-export const LinkButton = styled(Link)`
-  display: inline-block;
-  margin: 5px 5px 5px 5px;
-  padding: 0 8px;
-  text-align: right;
-  background: ${props => props.btnColor || '#5cb85c'};
-  color: #fff;
-  border-radius: var(--radius);
-  cursor: pointer;
-  :hover {
-    opacity: 0.8;
-    text-decoration: none;
   }
 `

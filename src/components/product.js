@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import styled from 'styled-components';
-import { Link } from 'gatsby'
 import { CartContext } from '../context/CartContext'
 import Image from './image';
 
@@ -61,20 +60,5 @@ export const ActionButton = styled.button`
   border-radius: var(--radius);
   :hover {
     opacity: 0.8;
-  }
-`
-
-export const LinkButton = styled(Link)`
-  display: inline-block;
-  margin: 5px 5px 5px 5px;
-  padding: 0 8px;
-  text-align: right;
-  background: ${props => props.btnColor || '#5cb85c'};
-  color: #fff;
-  border-radius: var(--radius);
-  cursor: pointer;
-  :hover {
-    opacity: 0.8;
-    text-decoration: none;
   }
 `
