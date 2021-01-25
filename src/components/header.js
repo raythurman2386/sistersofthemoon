@@ -77,7 +77,7 @@ const Header = ({ siteTitle }) => {
             {/* <Link className="site-nav-item" to="/cancel">Blog</Link> */}
           </div>
           <div className="site-nav-right">
-            {cart.length !== 0 && (
+            {cart && cart.length !== 0 && (
               <Link className="site-nav-button cart" to="/cart">
                 Cart{" "}
                 {cart && cart.reduce((acc, item) => (acc += item.quantity), 0)}
