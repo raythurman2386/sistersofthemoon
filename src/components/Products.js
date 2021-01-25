@@ -13,7 +13,7 @@ const Products = () => {
           product.node.product.name === "Tarot Reading" ||
           product.node.product.name === "Rune Reading"
         ) {
-          return
+          return null
         }
         return <Product key={product.node.id} item={product.node} />
       })}

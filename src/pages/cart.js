@@ -7,11 +7,10 @@ import { ActionButton } from "../components/product"
 import { loadStripe } from "@stripe/stripe-js"
 
 let stripePromise
-let key = process.env.STRIPE_PRODUCT_KEY
 let address = process.env.ADDRESS
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(`${key}`)
+    stripePromise = loadStripe(`pk_test_51HAo5UKM9H0GScyLl3NpoW7Sc9sxFN2ixWtgdC6eJyfYkDNX6hbIwLwM1j3O8Cehm7Zip2KZ0MlMj64t2KB1OTkO000miH1d4a`)
   }
   return stripePromise
 }
