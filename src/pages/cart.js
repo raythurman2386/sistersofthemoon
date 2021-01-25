@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import Layout from "../components/layout"
-import { CartContext } from '../context/CartContext'
+import { CartContext } from "../context/CartContext"
 import SEO from "../components/seo"
-import styled from 'styled-components'
-import { ActionButton } from '../components/product';
+import styled from "styled-components"
+import { ActionButton } from "../components/product"
 import { loadStripe } from "@stripe/stripe-js"
 
 let stripePromise
@@ -19,13 +19,13 @@ const CartPage = () => {
   const { cart, removeItem } = useContext(CartContext)
 
   const placeOrder = async (e, cart) => {
-    e.preventDefault();
+    e.preventDefault()
     setLoading(true)
     let lineItems = []
     cart.map(item => {
       return lineItems.push({
         price: item.id,
-        quantity: item.quantity
+        quantity: item.quantity,
       })
     })
 
@@ -49,17 +49,42 @@ const CartPage = () => {
       <div className="container">
         <h2>My Shopping Cart</h2>
         <ListContainer>
-          {cart && cart.map(item => (
-            <ListItem key={item.id}>
-              <div>{item.quantity}{' - '}${(item.unit_amount * item.quantity) / 100}.00</div>
-              <div>{item.product.name}{item.nickname && <span> - {item.nickname}</span>}</div>
-              <ActionButton btnColor="#d9534f" onClick={e => removeItem(e, item.id)}>X</ActionButton>
-            </ListItem>
-          ))}
+          {cart &&
+            cart.map(item => (
+              <ListItem key={item.id}>
+                <div>
+                  {item.quantity}
+                  {" - "}${(item.unit_amount * item.quantity) / 100}.00
+                </div>
+                <div>
+                  {item.product.name}
+                  {item.nickname && <span> - {item.nickname}</span>}
+                </div>
+                <ActionButton
+                  btnColor="#d9534f"
+                  onClick={e => removeItem(e, item.id)}
+                >
+                  X
+                </ActionButton>
+              </ListItem>
+            ))}
         </ListContainer>
         <ListFooter>
-          <Subtotal>Subtotal: <span>${cart && cart.reduce((acc, item) => acc += (item.unit_amount * item.quantity), 0) / 100}.00</span></Subtotal>
-          <ActionButton onClick={(e) => placeOrder(e, cart)}>{!loading ? 'Place Order' : 'Loading'}</ActionButton>
+          <Subtotal>
+            Subtotal:{" "}
+            <span>
+              $
+              {cart &&
+                cart.reduce(
+                  (acc, item) => (acc += item.unit_amount * item.quantity),
+                  0
+                ) / 100}
+              .00
+            </span>
+          </Subtotal>
+          <ActionButton onClick={e => placeOrder(e, cart)}>
+            {!loading ? "Place Order" : "Loading"}
+          </ActionButton>
         </ListFooter>
       </div>
     </Layout>
@@ -69,7 +94,7 @@ const CartPage = () => {
 export default CartPage
 
 export const ListContainer = styled.ul`
-list-style: none;
+  list-style: none;
 `
 
 export const ListItem = styled.li`
@@ -78,10 +103,10 @@ export const ListItem = styled.li`
   justify-content: space-between;
   padding: 1rem 0;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     div {
-    font-size: 1.3rem;
-  }
+      font-size: 1.3rem;
+    }
   }
 `
 

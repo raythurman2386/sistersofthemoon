@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
-import styled from 'styled-components';
-import { CartContext } from '../context/CartContext'
-import Image from './image';
+import styled from "styled-components"
+import { CartContext } from "../context/CartContext"
+import Image from "./image"
 
 const Product = ({ item }) => {
   const { addItem } = useContext(CartContext)
@@ -10,10 +10,12 @@ const Product = ({ item }) => {
       <header>
         <Image tarot />
         <Title>{item.product.name}</Title>
-        <Description>${(item.unit_amount) / 100}.00</Description>
+        <Description>${item.unit_amount / 100}.00</Description>
       </header>
 
-      <ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>
+      <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
+        Add To Cart
+      </ActionButton>
     </Card>
   )
 }
@@ -21,14 +23,15 @@ const Product = ({ item }) => {
 export default Product
 
 const Card = styled.div`
-    background: #fff;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-    transition: all 0.3s;
-    width: 100%;
-    border-radius: var(--radius);
-    &:hover {
-      box-shadow: 0 8px 17px 0 rgba(155,155,155,0.2),0 6px 20px 0 rgba(155,155,155,0.19);
-    }
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: var(--radius);
+  &:hover {
+    box-shadow: 0 8px 17px 0 rgba(155, 155, 155, 0.2),
+      0 6px 20px 0 rgba(155, 155, 155, 0.19);
+  }
 `
 
 const Title = styled.h3`
@@ -55,7 +58,7 @@ export const ActionButton = styled.button`
   display: inline-block;
   margin: 5px 5px 5px 5px;
   text-align: right;
-  background: ${props => props.btnColor || '#5cb85c'};
+  background: ${props => props.btnColor || "#5cb85c"};
   color: #fff;
   border-radius: var(--radius);
   :hover {

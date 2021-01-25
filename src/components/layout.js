@@ -22,7 +22,9 @@ const Layout = ({ children }) => {
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <Header siteTitle={title} />
-          <main className="site-main" style={{ minHeight: '50vh' }}>{children}</main>
+          <main className="site-main" style={{ minHeight: "50vh" }}>
+            {children}
+          </main>
         </div>
         <div className="viewport-bottom">
           {/* The footer at the very bottom of the screen */}
@@ -30,11 +32,10 @@ const Layout = ({ children }) => {
             <div className="site-foot-nav container">
               {/* Add footer nav links in this container */}
             </div>
-              © {new Date().getFullYear()}
+            © {new Date().getFullYear()}
             {` `}
-              Sisters by the Moon
+            Sisters by the Moon
           </footer>
-
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
-import styled from 'styled-components';
-import { CartContext } from '../context/CartContext'
-import Image from './image';
+import styled from "styled-components"
+import { CartContext } from "../context/CartContext"
+import Image from "./image"
 
 const CardProduct = ({ item }) => {
   const { addItem } = useContext(CartContext)
@@ -10,7 +10,11 @@ const CardProduct = ({ item }) => {
       <div className="card">
         <div className="front">
           <header>
-            {item.product.name === 'Tarot Reading' ? (<Image tarot />) : (<Image rune />)}
+            {item.product.name === "Tarot Reading" ? (
+              <Image tarot />
+            ) : (
+              <Image rune />
+            )}
             <Title>{item.nickname}</Title>
             <Description>${item.unit_amount / 100}.00</Description>
           </header>
@@ -18,7 +22,9 @@ const CardProduct = ({ item }) => {
         <div className="back">
           <Title>{item.nickname}</Title>
           Description goes here
-          <ActionButton onClick={(e) => addItem(e, { ...item, quantity: 1 })}>Add To Cart</ActionButton>
+          <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
+            Add To Cart
+          </ActionButton>
         </div>
       </div>
     </Card>
@@ -35,7 +41,8 @@ const Card = styled.div`
   perspective: 1000px;
 
   .card {
-    .front, .back {
+    .front,
+    .back {
       position: absolute;
       top: 0;
       left: 0;
@@ -64,8 +71,8 @@ const Card = styled.div`
   &.flip-right {
     .card {
       .back {
-       opacity: 1;
-       transition: 0.3s;
+        opacity: 1;
+        transition: 0.3s;
       }
     }
   }
@@ -102,7 +109,7 @@ export const ActionButton = styled.button`
   display: inline-block;
   margin: 5px 5px 5px 5px;
   text-align: right;
-  background: ${props => props.btnColor || '#5cb85c'};
+  background: ${props => props.btnColor || "#5cb85c"};
   color: #fff;
   border-radius: var(--radius);
   :hover {

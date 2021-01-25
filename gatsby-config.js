@@ -1,5 +1,5 @@
-require('dotenv').config({
-  path: `.env`
+require("dotenv").config({
+  path: `.env`,
 })
 
 module.exports = {
@@ -23,13 +23,13 @@ module.exports = {
         disable: false, // Flag for disabling animations
 
         // Advanced Options
-        selector: '[data-sal]', // Selector of the elements to be animated
-        animateClassName: 'sal-animate', // Class name which triggers animation
-        disabledClassName: 'sal-disabled', // Class name which defines the disabled state
-        rootMargin: '0% 50%', // Corresponds to root's bounding box margin
-        enterEventName: 'sal:in', // Enter event name
-        exitEventName: 'sal:out', // Exit event name
-      }
+        selector: "[data-sal]", // Selector of the elements to be animated
+        animateClassName: "sal-animate", // Class name which triggers animation
+        disabledClassName: "sal-disabled", // Class name which defines the disabled state
+        rootMargin: "0% 50%", // Corresponds to root's bounding box margin
+        enterEventName: "sal:in", // Enter event name
+        exitEventName: "sal:out", // Exit event name
+      },
     },
     `gatsby-plugin-stripe`,
     `gatsby-plugin-react-helmet`,
@@ -43,7 +43,14 @@ module.exports = {
     {
       resolve: `gatsby-source-stripe`,
       options: {
-        objects: ['Balance', 'BalanceTransaction', 'Product', 'ApplicationFee', 'Price', 'Subscription'],
+        objects: [
+          "Balance",
+          "BalanceTransaction",
+          "Product",
+          "ApplicationFee",
+          "Price",
+          "Subscription",
+        ],
         secretKey: `${process.env.STRIPE_SECRET_KEY}`,
         downloadFiles: true,
       },

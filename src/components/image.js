@@ -23,14 +23,14 @@ const Image = ({ rune, tarot, candle }) => {
           }
         }
       }
-      tarotImage: file(relativePath: { eq: "tarot.webp"}) {
+      tarotImage: file(relativePath: { eq: "tarot.webp" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      candleImage: file(relativePath: { eq: "candle.webp"}) {
+      candleImage: file(relativePath: { eq: "candle.webp" }) {
         childImageSharp {
           fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
@@ -41,11 +41,20 @@ const Image = ({ rune, tarot, candle }) => {
   `)
 
   if (rune) {
-    return <Img fluid={data.runeImage.childImageSharp.fluid} alt="rune readings" />
+    return (
+      <Img fluid={data.runeImage.childImageSharp.fluid} alt="rune readings" />
+    )
   } else if (tarot) {
-    return <Img fluid={data.tarotImage.childImageSharp.fluid} alt="tarot readings" />
+    return (
+      <Img fluid={data.tarotImage.childImageSharp.fluid} alt="tarot readings" />
+    )
   } else if (candle) {
-    return <Img fluid={data.candleImage.childImageSharp.fluid} alt="homemade candles" />
+    return (
+      <Img
+        fluid={data.candleImage.childImageSharp.fluid}
+        alt="homemade candles"
+      />
+    )
   }
 
   return
