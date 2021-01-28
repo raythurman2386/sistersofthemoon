@@ -5,8 +5,18 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Sisters by the Moon`,
+    siteTitle: `Sisters by the Moon`,
+    siteTitleShort: `SBTM`,
     description: `Home to all of your homemade candle and personalized tarot are rune readings`,
-    author: `@gatsbyjs`,
+    siteUrl: `https://www.sistersbythemoon.com`,
+    siteLanguage: `en`,
+    ogUrl: "https://www.sistersbythemoon.com",
+    ogTitle: `Sisters by the Moon`,
+    ogDescription:
+      "Home to all of your homemade candle and personalized tarot are rune readings",
+    ogImage: "/images/official_bg.webp",
+    siteLogo: "/images/official_bg.webp",
+    author: `@rthurman2386`,
   },
   plugins: [
     {

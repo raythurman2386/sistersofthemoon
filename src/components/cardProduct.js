@@ -13,8 +13,8 @@ const CardProduct = ({ item }) => {
             {item.product.name === "Tarot Reading" ? (
               <Image tarot />
             ) : (
-                <Image rune />
-              )}
+              <Image rune />
+            )}
             <Title>{item.nickname}</Title>
             <Description>${item.unit_amount / 100}.00</Description>
           </header>
