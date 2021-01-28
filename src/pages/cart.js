@@ -34,8 +34,8 @@ const CartPage = () => {
     const { error } = await stripe.redirectToCheckout({
       lineItems,
       mode: "payment",
-      successUrl: `${address}/success`,
-      cancelUrl: `${address}/cancel`,
+      successUrl: `https://www.sistersbythemoon.com/success`,
+      cancelUrl: `https://www.sistersbythemoon.com/cancel`,
     })
 
     if (error) {
