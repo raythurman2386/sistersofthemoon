@@ -322,7 +322,6 @@ body {
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: "liga" on;
 }
 
 ::selection {
@@ -668,7 +667,7 @@ h6 {
     padding-bottom: 20px;
     color: #fff;
     background: #fff;
-    background-image: url(../images/official_bg.jpg);
+    background-image: url(../images/official_bg.webp);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
