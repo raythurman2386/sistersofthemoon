@@ -54,7 +54,7 @@ const Header = ({ siteTitle }) => {
           </div>
         </div>
         <div className="site-banner">
-          <h1 className="site-banner-title">{siteTitle}</h1>
+          {/* <h1 className="site-banner-title">{siteTitle}</h1> */}
           {/* <p className="site-banner-desc">Welcome</p> */}
         </div>
 
