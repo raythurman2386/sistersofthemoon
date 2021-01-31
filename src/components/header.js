@@ -91,22 +91,32 @@ const Header = ({ siteTitle }) => {
         </nav>
 
         {/* Mobile Nav */}
-        <nav className="mobile-site-nav">
-          <div className="mobile-site-mast">
-            <div className="mobile-site-mast-left">
+        <div class="mobile-wrapper">
+          <div class="mobile-container">
+            <div class="content">
+              <nav>
+                <input type="checkbox" id="hamburger1" />
+                <label for="hamburger1"></label>
+
+                <ul class="nav-links">
+                  <li><a href="#">about us</a></li>
+                  <li><a href="#">products</a></li>
+                  <li><a href="#">media</a></li>
+                  <li><a href="#">contact us</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div className="site-mast-left">
               <Link to="/">
                 <img
                   src={MoonLogo}
-                  style={{ width: "30px", height: "30px" }}
+                  style={{ width: "30px", height: "30px", marginRight: "20px" }}
                   alt={siteTitle}
                 />
               </Link>
             </div>
-            <div className="mobile-site-mast-right">
-              {/* <button>=</button> */}
-            </div>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   )

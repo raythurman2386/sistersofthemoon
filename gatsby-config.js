@@ -19,6 +19,7 @@ module.exports = {
     author: `@rthurman2386`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

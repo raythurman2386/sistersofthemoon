@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 import Header from "./header"
-import "./layout.css"
+import "./layout.scss"
 
 const Layout = ({ children }) => {
   // const isHome = window.location.pathname === '/';
