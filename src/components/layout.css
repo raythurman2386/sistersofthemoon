@@ -768,6 +768,34 @@ h6 {
     text-decoration: none;
 }
 
+@media (max-width: 768px) {
+    .site-mast {
+        display: none;
+    }
+    .site-nav {
+        display: none;
+    }
+    .site-head {
+        min-height: 25vh;
+        margin-top: 40px;
+    }
+}
+
+.mobile-site-nav {
+    position: fixed;
+    top: 0;
+    color: #333;
+    padding: 10px 0;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.mobile-site-mast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Main
 /* ---------------------------------------------------------- */
 

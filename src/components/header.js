@@ -89,6 +89,24 @@ const Header = ({ siteTitle }) => {
             </Link>
           </div>
         </nav>
+
+        {/* Mobile Nav */}
+        <nav className="mobile-site-nav">
+          <div className="mobile-site-mast">
+            <div className="mobile-site-mast-left">
+              <Link to="/">
+                <img
+                  src={MoonLogo}
+                  style={{ width: "30px", height: "30px" }}
+                  alt={siteTitle}
+                />
+              </Link>
+            </div>
+            <div className="mobile-site-mast-right">
+              {/* <button>=</button> */}
+            </div>
+          </div>
+        </nav>
       </div>
     </header>
   )
