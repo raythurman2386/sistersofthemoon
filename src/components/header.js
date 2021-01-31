@@ -99,14 +99,14 @@ const Header = ({ siteTitle }) => {
                 <label for="hamburger1"></label>
 
                 <ul class="nav-links">
-                  <li><a href="#">about us</a></li>
-                  <li><a href="#">products</a></li>
-                  <li><a href="#">media</a></li>
-                  <li><a href="#">contact us</a></li>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/store">Store</Link></li>
+                  <li><Link to="/tarot">Tarot</Link></li>
+                  <li><Link to="/runes">Runes</Link></li>
                 </ul>
               </nav>
             </div>
-            <div className="site-mast-left">
+            <div>
               <Link to="/">
                 <img
                   src={MoonLogo}

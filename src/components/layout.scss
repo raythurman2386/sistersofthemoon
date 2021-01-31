@@ -790,6 +790,7 @@ $nav-links: about, products, media, contact us;
   vertical-align: middle;
   .mobile-container {
     background: #fff;
+    height: 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -804,16 +805,11 @@ $nav-links: about, products, media, contact us;
 
 // Inner mobile canvas
 .content {
-  background: aliceblue;
+//   background: aliceblue;
   display: block;
   height: 100%;
   overflow: hidden;
   width: 100%;
-  nav {
-    background: #fff;
-    height: 60px;
-    position: relative;
-  }
   .nav-links {
     display: block;
     position: absolute;
@@ -821,6 +817,7 @@ $nav-links: about, products, media, contact us;
     left: 0;
     width: 100%;
     z-index: 4;
+    list-style: none;
     // Dark overlay on open nav
     &::before {
       background: rgba(0, 0, 0, .5);
@@ -835,11 +832,12 @@ $nav-links: about, products, media, contact us;
       transition: all .3s;
     }
     li {
-      border-bottom: 1px solid #ddd;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-20px);
       transition: all .3s;
+      margin: 0;
+      width: 100%;
       a {
         background: #fff;
         color: #404040;
@@ -851,7 +849,7 @@ $nav-links: about, products, media, contact us;
         width: 100%;
         transition: all .3s;
         &:hover {
-          color: coral;
+          color: purple;
         }
       }
     }
