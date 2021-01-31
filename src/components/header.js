@@ -106,11 +106,21 @@ const Header = ({ siteTitle }) => {
                 </ul>
               </nav>
             </div>
-            <div>
+            <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
+              {cart && cart.length !== 0 && (
+                <>
+                  <Link to="/cart">
+                    <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>{" "}
+                  </Link>
+                  <span style={{ color: 'black', padding: '0 10px 0 5px' }}>{cart && cart.reduce((acc, item) => (acc += item.quantity), 0)}</span>
+                </>
+              )}
               <Link to="/">
                 <img
                   src={MoonLogo}
-                  style={{ width: "30px", height: "30px", marginRight: "20px" }}
+                  style={{ width: "30px", height: "30px", marginRight: "25px" }}
                   alt={siteTitle}
                 />
               </Link>
