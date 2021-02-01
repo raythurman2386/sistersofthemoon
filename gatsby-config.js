@@ -53,7 +53,6 @@ module.exports = {
         exitEventName: "sal:out", // Exit event name
       },
     },
-    // `gatsby-plugin-stripe`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -62,21 +61,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-stripe`,
-    //   options: {
-    //     objects: [
-    //       "Balance",
-    //       "BalanceTransaction",
-    //       "Product",
-    //       "ApplicationFee",
-    //       "Price",
-    //       "Subscription",
-    //     ],
-    //     secretKey: `${process.env.STRIPE_SECRET_KEY}`,
-    //     downloadFiles: true,
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
