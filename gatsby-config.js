@@ -27,6 +27,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: `sisters-by-the-moon`,
+        // The storefront access token
+        accessToken: `13a80f9008ebe336a758123c7e23e654`,
+        verbose: true,
+        paginationSize: 250
+      },
+    },
+    {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
         threshold: 0.7, // Percentage of an element's area that needs to be visible to launch animation
