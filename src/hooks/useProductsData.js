@@ -1,24 +1,37 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 export const useProductsData = () => {
-  const { allStripePrice } = useStaticQuery(
+  const { allShopifyProduct } = useStaticQuery(
     graphql`
       query AllProducts {
-        allStripePrice {
+        allShopifyProduct {
           edges {
             node {
               id
-              nickname
-              product {
-                id
-                name
+              title
+              description
+              handle
+              productType
+              availableForSale
+              variants {
+                price
+                title
+                requiresShipping
               }
-              unit_amount
+              images {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 400, maxHeight: 275) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     `
   )
-  return allStripePrice
+  return allShopifyProduct
 }

@@ -96,25 +96,54 @@ const Header = ({ siteTitle }) => {
             <div class="content">
               <nav>
                 <input type="checkbox" id="hamburger1" />
-                <label for="hamburger1"></label>
+                <label htmlFor="hamburger1"></label>
 
                 <ul class="nav-links">
-                  <li><Link to="/about">About Us</Link></li>
-                  <li><Link to="/store">Store</Link></li>
-                  <li><Link to="/tarot">Tarot</Link></li>
-                  <li><Link to="/runes">Runes</Link></li>
+                  <li>
+                    <Link to="/about">About Us</Link>
+                  </li>
+                  <li>
+                    <Link to="/store">Store</Link>
+                  </li>
+                  <li>
+                    <Link to="/tarot">Tarot</Link>
+                  </li>
+                  <li>
+                    <Link to="/runes">Runes</Link>
+                  </li>
                 </ul>
               </nav>
             </div>
-            <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               {cart && cart.length !== 0 && (
                 <>
                   <Link to="/cart">
-                    <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    <svg
+                      height="30"
+                      width="30"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="black"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1"
+                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                      />
                     </svg>{" "}
                   </Link>
-                  <span style={{ color: 'black', padding: '0 10px 0 5px' }}>{cart && cart.reduce((acc, item) => (acc += item.quantity), 0)}</span>
+                  <span style={{ color: "black", padding: "0 10px 0 5px" }}>
+                    {cart &&
+                      cart.reduce((acc, item) => (acc += item.quantity), 0)}
+                  </span>
                 </>
               )}
               <Link to="/">

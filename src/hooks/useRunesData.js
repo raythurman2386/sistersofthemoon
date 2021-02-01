@@ -1,18 +1,36 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 export const useRunesData = () => {
-  const { allStripePrice } = useStaticQuery(
+  const { allShopifyProduct } = useStaticQuery(
     graphql`
       query AllRunes {
-        allStripePrice(filter: { product: { name: { eq: "Rune Reading" } } }) {
+        allShopifyProduct(filter: {title: {eq: "Rune Reading"}}) {
           edges {
             node {
               id
-              nickname
-              unit_amount
-              product {
+              title
+              description
+              handle
+              productType
+              availableForSale
+              variants {
+                price
+                title
+                requiresShipping
                 id
-                name
+                sku
+                product {
+                  description
+                }
+              }
+              images {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 400) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
@@ -20,5 +38,5 @@ export const useRunesData = () => {
       }
     `
   )
-  return allStripePrice
+  return allShopifyProduct
 }

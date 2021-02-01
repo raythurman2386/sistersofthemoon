@@ -1,28 +1,23 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { CartContext } from "../context/CartContext"
-import Image from "./image"
+import Img from "gatsby-image"
 
-const CardProduct = ({ item }) => {
+const CardProduct = ({ item, product }) => {
   const { addItem } = useContext(CartContext)
   return (
     <Card className="flip-right">
       <div className="card">
         <div className="front">
           <header>
-            {item.product.name === "Tarot Reading" ? (
-              <Image tarot />
-            ) : (
-              <Image rune />
-            )}
-            <Title>{item.nickname}</Title>
-            <Description>${item.unit_amount / 100}.00</Description>
+            <Img fluid={product.images[0].localFile.childImageSharp.fluid} />
+            <Title>{item.title}</Title>
           </header>
         </div>
         <div className="back">
-          <Title>{item.nickname}</Title>
-          Description goes here
-          <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
+          <Title>{item.title}</Title>
+          <Description>{item.price}</Description>
+          <ActionButton onClick={e => addItem(e, { ...product, variants: [item], quantity: 1 })}>
             Add To Cart
           </ActionButton>
         </div>

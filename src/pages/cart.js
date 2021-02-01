@@ -4,17 +4,17 @@ import { CartContext } from "../context/CartContext"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import { ActionButton } from "../components/product"
-import { loadStripe } from "@stripe/stripe-js"
+// import { loadStripe } from "@stripe/stripe-js"
 
-let stripePromise
-const getStripe = () => {
-  if (!stripePromise) {
-    stripePromise = loadStripe(
-      `pk_test_51HAo5UKM9H0GScyLl3NpoW7Sc9sxFN2ixWtgdC6eJyfYkDNX6hbIwLwM1j3O8Cehm7Zip2KZ0MlMj64t2KB1OTkO000miH1d4a`
-    )
-  }
-  return stripePromise
-}
+// let stripePromise
+// const getStripe = () => {
+//   if (!stripePromise) {
+//     stripePromise = loadStripe(
+//       `pk_test_51HAo5UKM9H0GScyLl3NpoW7Sc9sxFN2ixWtgdC6eJyfYkDNX6hbIwLwM1j3O8Cehm7Zip2KZ0MlMj64t2KB1OTkO000miH1d4a`
+//     )
+//   }
+//   return stripePromise
+// }
 
 const CartPage = () => {
   const [loading, setLoading] = React.useState(false)
@@ -31,18 +31,18 @@ const CartPage = () => {
       })
     })
 
-    const stripe = await getStripe()
-    const { error } = await stripe.redirectToCheckout({
-      lineItems,
-      mode: "payment",
-      successUrl: `https://www.sistersbythemoon.com/success`,
-      cancelUrl: `https://www.sistersbythemoon.com/cancel`,
-    })
+    // const stripe = await getStripe()
+    // const { error } = await stripe.redirectToCheckout({
+    //   lineItems,
+    //   mode: "payment",
+    //   successUrl: `https://www.sistersbythemoon.com/success`,
+    //   cancelUrl: `https://www.sistersbythemoon.com/cancel`,
+    // })
 
-    if (error) {
-      console.warn("Error", error)
-      setLoading(false)
-    }
+    // if (error) {
+    //   console.warn("Error", error)
+    //   setLoading(false)
+    // }
   }
 
   return (
@@ -56,11 +56,14 @@ const CartPage = () => {
               <ListItem key={item.id}>
                 <div>
                   {item.quantity}
-                  {" - "}${(item.unit_amount * item.quantity) / 100}.00
+                  {" - "}${(item.variants[0].price * item.quantity)}
                 </div>
                 <div>
-                  {item.product.name}
-                  {item.nickname && <span> - {item.nickname}</span>}
+                  {item.title}
+                  {item.title === "Tarot Reading" &&
+                    ` | ${item.variants[0].title}`}
+                  {item.title === "Rune Reading" &&
+                    ` | ${item.variants[0].title}`}
                 </div>
                 <ActionButton
                   btnColor="#d9534f"
@@ -78,10 +81,9 @@ const CartPage = () => {
               $
               {cart &&
                 cart.reduce(
-                  (acc, item) => (acc += item.unit_amount * item.quantity),
+                  (acc, item) => (acc += parseInt(item.variants[0].price) * item.quantity),
                   0
-                ) / 100}
-              .00
+                )}
             </span>
           </Subtotal>
           <ActionButton onClick={e => placeOrder(e, cart)}>

@@ -10,9 +10,14 @@ const Runes = () => {
     // TODO: Style store and products
     // Change to CSS Grid for the store layout
     <GridContainer>
-      {edges.map(item => (
-        <CardProduct key={item.node.id} item={item.node} />
-      ))}
+      {edges.map(product => {
+        console.log(product, 'product')
+        return (
+          product.node.variants.map(variant => (
+            <CardProduct key={variant.id} item={variant} product={product.node} />
+          ))
+        )
+      })}
     </GridContainer>
   )
 }

@@ -14,6 +14,18 @@ export const useLocalStorage = initialValue => {
 
   const addItem = (e, item) => {
     e.preventDefault()
+    let [tarot] = storedCart.filter(cartitem => cartitem.title === "Tarot Reading")
+    if (tarot) {
+      if (item.title === "Tarot Reading") {
+        return
+      }
+    }
+    let [run] = storedCart.filter(cartitem => cartitem.title === "Rune Reading")
+    if (run) {
+      if (item.title === "Rune Reading") {
+        return
+      }
+    }
     let [dups] = storedCart.filter(cartitem => cartitem.id === item.id)
     let newCart = storedCart.filter(cartitem => cartitem.id !== item.id)
     if (dups) {
