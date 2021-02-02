@@ -4,7 +4,7 @@ export const useCardsData = () => {
   const { allShopifyProduct } = useStaticQuery(
     graphql`
       query AllCards {
-        allShopifyProduct(filter: {title: {eq: "Tarot Reading"}}) {
+        allShopifyProduct(filter: { title: { eq: "Tarot Reading" } }) {
           edges {
             node {
               id

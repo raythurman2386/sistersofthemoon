@@ -4,7 +4,7 @@ export const useRunesData = () => {
   const { allShopifyProduct } = useStaticQuery(
     graphql`
       query AllRunes {
-        allShopifyProduct(filter: {title: {eq: "Rune Reading"}}) {
+        allShopifyProduct(filter: { title: { eq: "Rune Reading" } }) {
           edges {
             node {
               id

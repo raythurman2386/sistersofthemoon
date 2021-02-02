@@ -32,7 +32,7 @@ module.exports = {
         // The domain name of your Shopify shop.
         shopName: `sisters-by-the-moon`,
         // The storefront access token
-        accessToken: `13a80f9008ebe336a758123c7e23e654`,
+        accessToken: `${process.env.SHOPIFY_STOREFRONT_KEY}`,
         verbose: true,
         paginationSize: 250,
       },

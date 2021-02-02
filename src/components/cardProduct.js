@@ -17,7 +17,11 @@ const CardProduct = ({ item, product }) => {
         <div className="back">
           <Title>{item.title}</Title>
           <Description>{item.price}</Description>
-          <ActionButton onClick={e => addItem(e, { ...product, variants: [item], quantity: 1 })}>
+          <ActionButton
+            onClick={e =>
+              addItem(e, { ...product, variants: [item], quantity: 1 })
+            }
+          >
             Add To Cart
           </ActionButton>
         </div>

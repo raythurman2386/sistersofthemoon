@@ -14,7 +14,9 @@ export const useLocalStorage = initialValue => {
 
   const addItem = (e, item) => {
     e.preventDefault()
-    let [tarot] = storedCart.filter(cartitem => cartitem.title === "Tarot Reading")
+    let [tarot] = storedCart.filter(
+      cartitem => cartitem.title === "Tarot Reading"
+    )
     if (tarot) {
       if (item.title === "Tarot Reading") {
         return

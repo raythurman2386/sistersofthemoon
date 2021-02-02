@@ -7,7 +7,7 @@ import { ActionButton } from "../components/product"
 import { StoreContext } from "../context/StoreContext"
 
 const CartPage = () => {
-  const [url, setUrl] = React.useState('')
+  const [url, setUrl] = React.useState("")
   const [loading, setLoading] = React.useState(true)
   const { cart, removeItem, emptyCart } = useContext(CartContext)
   const { client } = useContext(StoreContext)
@@ -17,14 +17,17 @@ const CartPage = () => {
       const newCheckout = await client.checkout.create()
       setLoading(true)
       let lineItems = []
-      cart.map(item => (
+      cart.map(item =>
         lineItems.push({
           variantId: item.variants[0].shopifyId,
           quantity: item.quantity,
         })
-      ))
+      )
 
-      const addItems = await client.checkout.addLineItems(newCheckout.id, lineItems)
+      const addItems = await client.checkout.addLineItems(
+        newCheckout.id,
+        lineItems
+      )
       setUrl(addItems.webUrl)
       setLoading(false)
     }
@@ -43,7 +46,7 @@ const CartPage = () => {
               <ListItem key={item.id}>
                 <div>
                   {item.quantity}
-                  {" - "}${(item.variants[0].price * item.quantity)}
+                  {" - "}${item.variants[0].price * item.quantity}
                 </div>
                 <div>
                   {item.title}
@@ -68,7 +71,8 @@ const CartPage = () => {
               $
               {cart &&
                 cart.reduce(
-                  (acc, item) => (acc += parseInt(item.variants[0].price) * item.quantity),
+                  (acc, item) =>
+                    (acc += parseInt(item.variants[0].price) * item.quantity),
                   0
                 )}
             </span>
@@ -76,7 +80,7 @@ const CartPage = () => {
           <div>
             <ActionButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
               Empty Cart
-          </ActionButton>
+            </ActionButton>
             <ActionLink href={url} target="_blank" rel="noopener noreferrer">
               {!loading ? "Place Order" : "Loading"}
             </ActionLink>

@@ -9,11 +9,9 @@ const Cards = () => {
   return (
     <GridContainer>
       {edges.map(product => {
-        return (
-          product.node.variants.map(variant => (
-            <CardProduct key={variant.id} item={variant} product={product.node} />
-          ))
-        )
+        return product.node.variants.map(variant => (
+          <CardProduct key={variant.id} item={variant} product={product.node} />
+        ))
       })}
     </GridContainer>
   )
