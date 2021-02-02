@@ -8,12 +8,14 @@ export const useProductsData = () => {
           edges {
             node {
               id
+              shopifyId
               title
               description
               handle
               productType
               availableForSale
               variants {
+                shopifyId
                 price
                 title
                 requiresShipping

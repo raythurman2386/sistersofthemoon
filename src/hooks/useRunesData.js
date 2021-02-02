@@ -8,6 +8,7 @@ export const useRunesData = () => {
           edges {
             node {
               id
+              shopifyId
               title
               description
               handle
@@ -18,9 +19,11 @@ export const useRunesData = () => {
                 title
                 requiresShipping
                 id
+                shopifyId
                 sku
                 product {
                   description
+                  shopifyId
                 }
               }
               images {

@@ -8,6 +8,7 @@ export const useCardsData = () => {
           edges {
             node {
               id
+              shopifyId
               title
               description
               handle
@@ -18,6 +19,7 @@ export const useCardsData = () => {
                 title
                 requiresShipping
                 id
+                shopifyId
                 sku
               }
               images {

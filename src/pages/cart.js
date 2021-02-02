@@ -4,34 +4,32 @@ import { CartContext } from "../context/CartContext"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import { ActionButton } from "../components/product"
+import { StoreContext } from "../context/StoreContext"
 
 const CartPage = () => {
   const [loading, setLoading] = React.useState(false)
-  const { cart, removeItem } = useContext(CartContext)
+  const { cart, removeItem, emptyCart } = useContext(CartContext)
+  const { client } = useContext(StoreContext)
 
   const placeOrder = async (e, cart) => {
-    e.preventDefault()
+    const newCheckout = await client.checkout.create()
     setLoading(true)
     let lineItems = []
     cart.map(item => {
       return lineItems.push({
-        price: item.id,
+        variantId: item.variants[0].shopifyId,
         quantity: item.quantity,
       })
     })
 
-    // const stripe = await getStripe()
-    // const { error } = await stripe.redirectToCheckout({
-    //   lineItems,
-    //   mode: "payment",
-    //   successUrl: `https://www.sistersbythemoon.com/success`,
-    //   cancelUrl: `https://www.sistersbythemoon.com/cancel`,
-    // })
+    const addItems = await client.checkout.addLineItems(newCheckout.id, lineItems)
 
-    // if (error) {
-    //   console.warn("Error", error)
-    //   setLoading(false)
-    // }
+    if (typeof window !== `undefined`) {
+      window.open(addItems.webUrl, "_blank")
+    }
+
+    setLoading(false)
+    emptyCart()
   }
 
   return (

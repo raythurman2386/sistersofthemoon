@@ -8,7 +8,10 @@
 import React from "react"
 
 import { CartProvider } from "./src/context/CartContext"
+import { StoreProvider } from "./src/context/StoreContext"
 
 export const wrapRootElement = ({ element }) => (
-  <CartProvider>{element}</CartProvider>
+  <StoreProvider>
+    <CartProvider>{element}</CartProvider>
+  </StoreProvider>
 )

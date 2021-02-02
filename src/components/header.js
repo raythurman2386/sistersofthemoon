@@ -91,14 +91,14 @@ const Header = ({ siteTitle }) => {
         </nav>
 
         {/* Mobile Nav */}
-        <div class="mobile-wrapper">
-          <div class="mobile-container">
-            <div class="content">
+        <div className="mobile-wrapper">
+          <div className="mobile-container">
+            <div className="content">
               <nav>
                 <input type="checkbox" id="hamburger1" />
                 <label htmlFor="hamburger1"></label>
 
-                <ul class="nav-links">
+                <ul className="nav-links">
                   <li>
                     <Link to="/about">About Us</Link>
                   </li>
@@ -133,9 +133,9 @@ const Header = ({ siteTitle }) => {
                       stroke="black"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1"
                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                       />
                     </svg>{" "}
