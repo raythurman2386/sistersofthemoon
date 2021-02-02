@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import { CartContext } from "../context/CartContext"
 import SEO from "../components/seo"
@@ -7,30 +7,30 @@ import { ActionButton } from "../components/product"
 import { StoreContext } from "../context/StoreContext"
 
 const CartPage = () => {
-  const [paid, setPaid] = React.useState(false)
-  const [loading, setLoading] = React.useState(false)
+  const [url, setUrl] = React.useState('')
+  const [loading, setLoading] = React.useState(true)
   const { cart, removeItem, emptyCart } = useContext(CartContext)
   const { client } = useContext(StoreContext)
 
-  const placeOrder = async (e, cart) => {
-    const newCheckout = await client.checkout.create()
-    setLoading(true)
-    let lineItems = []
-    cart.map(item => {
-      return lineItems.push({
-        variantId: item.variants[0].shopifyId,
-        quantity: item.quantity,
-      })
-    })
+  useEffect(() => {
+    const placeOrder = async () => {
+      const newCheckout = await client.checkout.create()
+      setLoading(true)
+      let lineItems = []
+      cart.map(item => (
+        lineItems.push({
+          variantId: item.variants[0].shopifyId,
+          quantity: item.quantity,
+        })
+      ))
 
-    const addItems = await client.checkout.addLineItems(newCheckout.id, lineItems)
-
-    if (typeof window !== `undefined`) {
-      window.open(addItems.webUrl, "_blank")
+      const addItems = await client.checkout.addLineItems(newCheckout.id, lineItems)
+      setUrl(addItems.webUrl)
       setLoading(false)
-      setPaid(true)
     }
-  }
+
+    placeOrder()
+  }, [cart])
 
   return (
     <Layout>
@@ -73,15 +73,14 @@ const CartPage = () => {
                 )}
             </span>
           </Subtotal>
-          {!paid ? (
-            <ActionButton onClick={e => placeOrder(e, cart)}>
+          <div>
+            <ActionButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
+              Empty Cart
+          </ActionButton>
+            <ActionLink href={url} target="_blank" rel="noopener noreferrer">
               {!loading ? "Place Order" : "Loading"}
-            </ActionButton>
-          ) : (
-              <ActionButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
-                Empty Cart
-              </ActionButton>
-            )}
+            </ActionLink>
+          </div>
         </ListFooter>
       </div>
     </Layout>
@@ -115,4 +114,18 @@ export const ListFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const ActionLink = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px 5px 5px 5px;
+  padding: 1px 5px;
+  text-align: right;
+  background: ${props => props.btnColor || "#5cb85c"};
+  color: #fff;
+  border-radius: var(--radius);
+  :hover {
+    opacity: 0.8;
+  }
 `
