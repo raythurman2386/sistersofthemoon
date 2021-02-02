@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { CartContext } from "../context/CartContext"
 import Img from "gatsby-image"
+import Image from './image'
 
 const Product = ({ item }) => {
   const { addItem } = useContext(CartContext)
@@ -12,7 +13,11 @@ const Product = ({ item }) => {
         <Img fluid={item.images[0].localFile.childImageSharp.fluid} />
         <Title>{item.title}</Title>
         <Description>{item.description}</Description>
-        <Description>${item.variants[0].price}</Description>
+        {item.availableForSale ? (
+          <Description>${item.variants[0].price}</Description>
+        ) : (
+            <Description>Currently Out of Stock</Description>
+          )}
       </header>
 
       <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
