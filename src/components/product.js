@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { CartContext } from "../context/CartContext"
 import Img from "gatsby-image"
-import Image from './image'
 
 const Product = ({ item }) => {
   const { addItem } = useContext(CartContext)
