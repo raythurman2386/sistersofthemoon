@@ -7,6 +7,7 @@ import { ActionButton } from "../components/product"
 import { StoreContext } from "../context/StoreContext"
 
 const CartPage = () => {
+  const [paid, setPaid] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const { cart, removeItem, emptyCart } = useContext(CartContext)
   const { client } = useContext(StoreContext)
@@ -26,10 +27,9 @@ const CartPage = () => {
 
     if (typeof window !== `undefined`) {
       window.open(addItems.webUrl, "_blank")
+      setLoading(false)
+      setPaid(true)
     }
-
-    setLoading(false)
-    emptyCart()
   }
 
   return (
@@ -73,9 +73,15 @@ const CartPage = () => {
                 )}
             </span>
           </Subtotal>
-          <ActionButton onClick={e => placeOrder(e, cart)}>
-            {!loading ? "Place Order" : "Loading"}
-          </ActionButton>
+          {!paid ? (
+            <ActionButton onClick={e => placeOrder(e, cart)}>
+              {!loading ? "Place Order" : "Loading"}
+            </ActionButton>
+          ) : (
+              <ActionButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
+                Empty Cart
+              </ActionButton>
+            )}
         </ListFooter>
       </div>
     </Layout>
