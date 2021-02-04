@@ -14,8 +14,8 @@ module.exports = {
     ogTitle: `Sisters by the Moon`,
     ogDescription:
       "Welcome to Sisters by the Moon. This shop is your go-to for Tarot and Rune readings, along with candles, bath salts, bath bombs and many more items to come!! ",
-    ogImage: "/images/official_bg.webp",
-    siteLogo: "/images/official_bg.webp",
+    ogImage: "/images/official_bg.jpg",
+    siteLogo: "/images/official_bg.jpg",
     author: `@rthurman2386`,
   },
   plugins: [
