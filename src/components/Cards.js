@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import { GridContainer } from "../styles/layout"
 import CardProduct from "./cardProduct"
 import { useCardsData } from "../hooks/useCardsData"
 
@@ -18,12 +18,3 @@ const Cards = () => {
 }
 
 export default Cards
-
-const GridContainer = styled.div`
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 4vw;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 5rem;
-`

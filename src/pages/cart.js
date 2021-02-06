@@ -2,8 +2,14 @@ import React, { useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import { CartContext } from "../context/CartContext"
 import SEO from "../components/seo"
-import styled from "styled-components"
-import { ActionButton } from "../components/product"
+import {
+  ListContainer,
+  ListItem,
+  ListFooter,
+  Subtotal,
+  ActionLink,
+  CartButton,
+} from "../styles/cart"
 import { StoreContext } from "../context/StoreContext"
 
 const CartPage = () => {
@@ -55,12 +61,12 @@ const CartPage = () => {
                   {item.title === "Rune Reading" &&
                     ` | ${item.variants[0].title}`}
                 </div>
-                <ActionButton
+                <CartButton
                   btnColor="#d9534f"
                   onClick={e => removeItem(e, item.id)}
                 >
                   X
-                </ActionButton>
+                </CartButton>
               </ListItem>
             ))}
         </ListContainer>
@@ -78,9 +84,9 @@ const CartPage = () => {
             </span>
           </Subtotal>
           <div>
-            <ActionButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
+            <CartButton btnColor="#f0ad4e" onClick={e => emptyCart()}>
               Empty Cart
-            </ActionButton>
+            </CartButton>
             <ActionLink href={url} target="_blank" rel="noopener noreferrer">
               {!loading ? "Place Order" : "Loading"}
             </ActionLink>
@@ -92,44 +98,3 @@ const CartPage = () => {
 }
 
 export default CartPage
-
-export const ListContainer = styled.ul`
-  list-style: none;
-`
-
-export const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-
-  @media (max-width: 768px) {
-    div {
-      font-size: 1.3rem;
-    }
-  }
-`
-
-export const Subtotal = styled.h5`
-  font-size: 1.6rem;
-`
-
-export const ListFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const ActionLink = styled.a`
-  display: inline-block;
-  text-decoration: none;
-  margin: 5px 5px 5px 5px;
-  padding: 1px 5px;
-  text-align: right;
-  background: ${props => props.btnColor || "#5cb85c"};
-  color: #fff;
-  border-radius: var(--radius);
-  :hover {
-    opacity: 0.8;
-  }
-`
