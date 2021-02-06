@@ -21,6 +21,15 @@ export const useCardsData = () => {
                 id
                 shopifyId
                 sku
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 400) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
               }
               images {
                 localFile {

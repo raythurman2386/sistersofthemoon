@@ -13,8 +13,8 @@ const Product = ({ item }) => {
       {item.availableForSale ? (
         <Description>${item.variants[0].price}</Description>
       ) : (
-        <Description>Currently Out of Stock</Description>
-      )}
+          <Description>Currently Out of Stock</Description>
+        )}
       <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
         Add To Cart
       </ActionButton>

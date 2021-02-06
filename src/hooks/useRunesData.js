@@ -21,6 +21,15 @@ export const useRunesData = () => {
                 id
                 shopifyId
                 sku
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 400) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
                 product {
                   description
                   shopifyId

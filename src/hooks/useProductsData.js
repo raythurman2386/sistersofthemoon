@@ -23,7 +23,7 @@ export const useProductsData = () => {
               images {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 200) {
+                    fluid(maxWidth: 400) {
                       ...GatsbyImageSharpFluid
                     }
                   }

@@ -7,7 +7,7 @@ const CardProduct = ({ item, product }) => {
   const { addItem } = useContext(CartContext)
   return (
     <Card className="flip-right">
-      <NewImg fluid={product.images[0].localFile.childImageSharp.fluid} />
+      <NewImg fluid={item.image.localFile.childImageSharp.fluid} />
       <Title>{item.title}</Title>
       <Description>${item.price}</Description>
       <ActionButton
