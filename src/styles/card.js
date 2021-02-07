@@ -57,6 +57,7 @@ const ActionButton = styled.button`
   cursor: pointer;
   margin-top: 5px;
   background-color: #3b3e6e;
+  background-color: ${props => props.disabled && "#333"};
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   :hover {
