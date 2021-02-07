@@ -2,6 +2,10 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   background: white;
   margin: 15px auto;
