@@ -15,16 +15,19 @@ const Product = ({ item }) => {
           <Description>${item.variants[0].price}</Description>
           <ActionButton onClick={e => addItem(e, { ...item, quantity: 1 })}>
             Add To Cart
-      </ActionButton>
+          </ActionButton>
         </>
       ) : (
-          <>
-            <Description>Currently Out of Stock</Description>
-            <ActionButton disabled onClick={e => addItem(e, { ...item, quantity: 1 })}>
-              Sold Out
-      </ActionButton>
-          </>
-        )}
+        <>
+          <Description>Currently Out of Stock</Description>
+          <ActionButton
+            disabled
+            onClick={e => addItem(e, { ...item, quantity: 1 })}
+          >
+            Sold Out
+          </ActionButton>
+        </>
+      )}
     </Card>
   )
 }
