@@ -38,6 +38,14 @@ module.exports = {
       },
     },
     {
+    resolve: `gatsby-source-strapi`,
+    options: {
+      apiURL: process.env.API_URL || "http://localhost:1337",
+      queryLimit: 1000, // Default to 100
+      contentTypes: [`quotes`, `user`],
+    },
+  },
+    {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
         threshold: 0.7, // Percentage of an element's area that needs to be visible to launch animation

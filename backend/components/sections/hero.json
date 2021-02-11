@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_decoration_heroes",
+  "info": {
+    "name": "Quote",
+    "icon": "book-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "type": "string"
+    }
+  }
+}
