@@ -9,10 +9,10 @@ import {
   ImageContainer,
 } from "../styles/index"
 import Image from "../components/image"
-import { useQuotesData } from "../hooks/useQuotesData"
+// import { useQuotesData } from "../hooks/useQuotesData"
 
 const IndexPage = () => {
-  const { edges } = useQuotesData();
+  // const { edges } = useQuotesData();
   return (
     <Layout>
       <SEO title="Home" />
@@ -23,7 +23,7 @@ const IndexPage = () => {
           data-sal-delay="1000" // adds delay to the animation (from 5 to 1000 ms)
           data-sal-easing="ease"
         >
-          {edges && edges[0].node ? (
+          {/* {edges && edges[0].node ? (
             <h3>
               "{edges[0].node.quote}"
               <span style={{ fontSize: "1.6rem", fontStyle: "none" }}>
@@ -31,7 +31,7 @@ const IndexPage = () => {
                 - {edges[0].node.author}
               </span>
             </h3>
-          ) : (
+          ) : ( */}
               <h3>
               "The space between life and death, that’s where we are the most
               alive."
@@ -40,7 +40,7 @@ const IndexPage = () => {
                 - Floki
               </span>
             </h3>
-          )}
+          {/* )} */}
         </ArticleTop>
 
         <ArticleLeft

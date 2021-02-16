@@ -37,14 +37,14 @@ module.exports = {
         paginationSize: 250,
       },
     },
-    {
-    resolve: `gatsby-source-strapi`,
-    options: {
-      apiURL: process.env.API_URL || "http://localhost:1337",
-      queryLimit: 1000, // Default to 100
-      contentTypes: [`quotes`, `user`],
-    },
-  },
+    // {
+    // resolve: `gatsby-source-strapi`,
+    // options: {
+    //     apiURL: process.env.API_URL || "http://localhost:1337",
+    //     queryLimit: 1000, // Default to 100
+    //     contentTypes: [`quotes`, `user`],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
